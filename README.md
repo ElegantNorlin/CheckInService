@@ -20,8 +20,13 @@
 *   京东自动化任务（关于狗东：目前只找到了签到接口，估计其他接口狗东都没开放给网页版。因此，该服务目前只支持狗东自动签到，如果大家有能用的接口，欢迎提供！）
     *   签到✔
     *   京豆资产查询✔
-*   Docker一键部署✔
-*   Cookie失效-Server酱通知✔
+*   阿里网盘
+    * 自动签到✔
+    * 自动领取签到奖励✔
+    * server酱通知✔
+    * pushdeer暂未开发通知（Todo）
+*   docker compose一键部署✔
+*   掘金、京东Cookie失效-Server酱通知✔
 *   自动化任务结果-Server酱微信服务号通知✔
 *   PushDeer消息通知（iOS and Android APP通知）✔
 

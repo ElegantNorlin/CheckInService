@@ -17,6 +17,9 @@ public class ADrive {
     @Value("${aDrive}")
     String token;
 
+    @Value("${aDrive_enable}")
+    private String aDrive_enable;
+
     @Value("${push_deer_key}")
     private String push_deer_key;
 
@@ -25,6 +28,9 @@ public class ADrive {
 
     @Scheduled(cron = "${aDrive_cron_expression}")
     public void autoTask() throws Exception {
+        if("false".equals(aDrive_enable)){
+            return;
+        }
         log.info("\n--------------------------------------------------------------------京东自动化任务开始-------------------------------------------------------------------------");
         // 签到
         JSONObject checkInJsonObject = ADriveApi.checkIn(token);
@@ -34,7 +40,7 @@ public class ADrive {
         JSONObject getAwardJsonObject = ADriveApi.getAward(token,Integer.parseInt(day));
         log.info("阿里网盘领取签到奖励接口响应信息为 {}",getAwardJsonObject);
         String result = checkInJsonObject.toString() + "\n" + getAwardJsonObject.toString();
-        if(server_jiang_key != null && !"".equals(server_jiang_key)){
+        if(server_jiang_key != null && !server_jiang_key.isEmpty()){
             ServerJiangHttpUtils.scSend("阿里网盘签到助手",result,server_jiang_key);
         }
 //        if(push_deer_key != null && !"".equals(push_deer_key)){
