@@ -1,0 +1,15 @@
+# 描述 docker-compose.yml 文件的版本信息
+version: "3.8"
+# 定义服务(可以多个)
+services:
+  check_in_service: # 服务名称
+    image: openjdk:8
+    container_name: check_in_container # 容器名称，默认为"工程名称_服务条目名称_序号"
+    ports: # 宿主机与容器的端口映射关系
+      - "8081:8081" # 左边宿主机端口:右边容器端口
+    volumes:
+      - "./logs:/logs"
+      - "/etc/localtime:/etc/localtime"
+      - "./jar:/jar"
+    restart: always
+    command: java -Duser.timezone=GMT+08 -jar /jar/CheckInService-0.0.1-SNAPSHOT.jar
