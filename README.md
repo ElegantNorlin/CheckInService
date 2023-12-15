@@ -65,4 +65,6 @@ docker-compose down
 docker-compose up -d
 ```
 
-<iframe style="width:100%;height:auto;min-width:600px;min-height:400px;" src="https://star-history.com/embed?secret=#ElegantNorlin/CheckInService&Date" frameBorder="0"></iframe>
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=ElegantNorlin/CheckInService&type=Date)](https://star-history.com/#ElegantNorlin/CheckInService&Date)
