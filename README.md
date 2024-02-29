@@ -53,7 +53,7 @@
 
 1. 下载项目[压缩包](https://github.com/ElegantNorlin/CheckInService/releases)并解压缩
 
-2. 配置\config\application.properties配置文件
+2. 配置  `\config\application.properties`配置文件
 3. 扔到linux服务器上，执行`docker-compose up -d`就部署成功了
 
 **注意：**
