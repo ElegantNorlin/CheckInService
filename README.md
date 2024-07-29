@@ -20,7 +20,7 @@
 *   京东自动化任务（关于狗东：目前只找到了签到接口，估计其他接口狗东都没开放给网页版。因此，该服务目前只支持狗东自动签到，如果大家有能用的接口，欢迎提供！）
     *   签到✔
     *   京豆资产查询✔
-*   阿里网盘
+*   阿里网盘 (暂时有点小问题待修复)
     * 自动签到✔
     * 自动领取签到奖励✔
     * server酱通知✔
@@ -53,7 +53,7 @@
 
 1. 下载项目[压缩包](https://github.com/ElegantNorlin/CheckInService/releases)并解压缩
 
-2. 配置\config\application.properties配置文件
+2. 配置  `\config\application.properties`配置文件
 3. 扔到linux服务器上，执行`docker-compose up -d`就部署成功了
 
 **注意：**
@@ -65,3 +65,6 @@ docker-compose down
 docker-compose up -d
 ```
 
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=ElegantNorlin/CheckInService&type=Date)](https://star-history.com/#ElegantNorlin/CheckInService&Date)
