@@ -49,6 +49,6 @@ public class CheckInByManual {
 
     @PostMapping("/test")
     public void test() throws Exception {
-        jingBean.isInvalidOfCookie();
+        jueJin.isInvalidOfCookie();
     }
 }
