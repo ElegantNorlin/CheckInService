@@ -1,4 +1,4 @@
-<img src="https://github.com/ElegantNorlin/CheckInService/blob/main/img/Snipaste_2024-07-29_20-07-43.png" width="50%">
+<img src="https://github.com/ElegantNorlin/CheckInService/blob/main/img/Snipaste_2024-07-29_20-07-43.png" width="90%">
 # ‍💻CheckInService
 
 基于SpringBoot开发的京东、掘金、阿里网盘定时签到服务（薅羊毛）
