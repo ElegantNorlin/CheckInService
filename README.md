@@ -1,3 +1,4 @@
+<img src="https://github.com/ElegantNorlin/CheckInService/blob/main/img/Snipaste_2024-07-29_20-07-43.png" width="90%">
 # ‍💻CheckInService
 
 基于SpringBoot开发的京东、掘金、阿里网盘定时签到服务（薅羊毛）
@@ -51,7 +52,7 @@
 
 ### 3 😋食用方法(docker compose一键部署)
 
-1. 下载项目[压缩包](https://github.com/ElegantNorlin/CheckInService/releases)并解压缩
+1. 下载项目[压缩包](https://github.com/ElegantNorlin/CheckInService/releases)并解压缩，不要调整目录结构以及文件所在路径
 
 2. 配置  `\config\application.properties`配置文件
 3. 扔到linux服务器上，执行`docker-compose up -d`就部署成功了
