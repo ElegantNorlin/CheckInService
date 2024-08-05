@@ -37,8 +37,7 @@ public class PushDeerHttpUtils {
             }
         }
         httpURLConnection.connect();
-        String responseData = getResponseData(httpURLConnection);
-        return responseData;
+        return getResponseData(httpURLConnection);
     }
 
     private static String getResponseData(HttpURLConnection httpURLConnection) {
@@ -46,7 +45,7 @@ public class PushDeerHttpUtils {
         InputStream inputStream = null;
         BufferedReader bufferedReader = null;
         InputStreamReader inputStreamReader = null;
-        StringBuffer stringBuffer = new StringBuffer();
+        StringBuilder stringBuffer = new StringBuilder();
         try {
             inputStream = httpURLConnection.getInputStream();
             inputStreamReader = new InputStreamReader(inputStream);
@@ -54,42 +53,36 @@ public class PushDeerHttpUtils {
             while ((string = bufferedReader.readLine()) != null) {
                 stringBuffer.append(string);
             }
-            String responseData = stringBuffer.toString();
-            return responseData;
+            return stringBuffer.toString();
         }catch (Exception exception){
-            log.error(exception.getMessage().toString());
-            exception.printStackTrace();
+            log.error(exception.getMessage());
         }finally {
             if (httpURLConnection != null) {
                 try {
                     httpURLConnection.disconnect();
                 } catch (Exception exception) {
-                    log.error(exception.getMessage().toString());
-                    exception.printStackTrace();
+                    log.error(exception.getMessage());
                 }
             }
             if (inputStream != null) {
                 try {
                     inputStream.close();
                 } catch (Exception exception) {
-                    log.error(exception.getMessage().toString());
-                    exception.printStackTrace();
+                    log.error(exception.getMessage());
                 }
             }
             if (inputStreamReader != null) {
                 try {
                     inputStreamReader.close();
                 } catch (Exception exception) {
-                    log.error(exception.getMessage().toString());
-                    exception.printStackTrace();
+                    log.error(exception.getMessage());
                 }
             }
             if (bufferedReader != null) {
                 try {
                     bufferedReader.close();
                 } catch (Exception exception) {
-                    log.error(exception.getMessage().toString());
-                    exception.printStackTrace();
+                    log.error(exception.getMessage());
                 }
             }
         }

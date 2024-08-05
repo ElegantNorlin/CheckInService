@@ -6,7 +6,6 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 
 /**
@@ -54,7 +53,7 @@ public class ServerJiangHttpUtils {
             log.info("\n--------------------------------------------------------------------Server酱请求结束-------------------------------------------------------------------------");
             return hashMap;
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Server酱请求异常：{}", e);
             hashMap.put("isSuccess","false");
             log.info("\n--------------------------------------------------------------------Server酱请求结束-------------------------------------------------------------------------");
             return hashMap;

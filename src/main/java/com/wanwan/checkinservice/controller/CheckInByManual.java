@@ -1,10 +1,5 @@
 package com.wanwan.checkinservice.controller;
 
-import com.alibaba.fastjson2.JSONArray;
-import com.alibaba.fastjson2.JSONObject;
-import com.wanwan.checkinservice.api.JinShanApi;
-import com.wanwan.checkinservice.api.JingDongApi;
-import com.wanwan.checkinservice.api.JueJinApi;
 import com.wanwan.checkinservice.jobs.ADrive;
 import com.wanwan.checkinservice.jobs.JingBean;
 import com.wanwan.checkinservice.jobs.JueJin;

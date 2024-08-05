@@ -31,7 +31,7 @@ public class HttpURLConnectionUtils {
             stringJoiner = new StringJoiner("&","?","");
             for (Map.Entry<String, String> header : headers.entrySet()) {
                 String key = header.getKey();
-                String value = header.getValue().toString();
+                String value = header.getValue();
                 stringJoiner.add(URLEncoder.encode(key, "UTF-8") + "=" + URLEncoder.encode(value, "UTF-8"));
             }
         }
@@ -48,7 +48,7 @@ public class HttpURLConnectionUtils {
         if(headers != null && !(headers.isEmpty())){
             for (Map.Entry<String, String> header : headers.entrySet()) {
                 String key = header.getKey();
-                String value = header.getValue().toString();
+                String value = header.getValue();
                 httpURLConnection.setRequestProperty(key,value);
             }
         }
@@ -76,14 +76,14 @@ public class HttpURLConnectionUtils {
             stringJoiner = new StringJoiner("&","?","");
             for (Map.Entry<String, String> header : headers.entrySet()) {
                 String key = header.getKey();
-                String value = header.getValue().toString();
+                String value = header.getValue();
                 stringJoiner.add(URLEncoder.encode(key, "UTF-8") + "=" + URLEncoder.encode(value, "UTF-8"));
             }
         }
         if(!(stringJoiner == null)){
             requestPath = requestPath + stringJoiner;
         }
-        log.info("\n本次post请求：\nURL is {}\n请求头：{}\n请求体：{}",requestPath,(headers == null) ? null : headers.toString(),(requestBody == null) ? null : requestBody);
+        log.info("\n本次post请求：\nURL is {}\n请求头：{}\n请求体：{}",requestPath,(headers == null) ? null : headers.toString(), requestBody);
         URL requestUrl = new URL(requestPath);
         HttpURLConnection httpURLConnection = (HttpURLConnection) requestUrl.openConnection();
         httpURLConnection.setDoOutput(true);
@@ -96,7 +96,7 @@ public class HttpURLConnectionUtils {
         if(headers != null && !(headers.isEmpty())){
             for (Map.Entry<String, String> header : headers.entrySet()) {
                 String key = header.getKey();
-                String value = header.getValue().toString();
+                String value = header.getValue();
                 httpURLConnection.setRequestProperty(key,value);
             }
         }

@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -53,10 +52,10 @@ public class JueJin {
             return;
         }
         if (isInvalidOfCookie) {
-            if (server_jiang_key != null && !"".equals(server_jiang_key)) {
+            if (server_jiang_key != null && !server_jiang_key.isEmpty()) {
                 ServerJiangHttpUtils.scSend("掘金等级成长助手", "juejin_cookie失效！请更新有效cookie并手动执行脚本！", server_jiang_key);
             }
-            if (push_deer_key != null && !"".equals(push_deer_key)) {
+            if (push_deer_key != null && !push_deer_key.isEmpty()) {
                 PushDeerHttpUtils.sendText("juejin_cookie失效！请更新有效cookie并手动执行脚本！", push_deer_key);
             }
         }
@@ -99,17 +98,17 @@ public class JueJin {
             resultHashMap.put("countOfCheckInHashMap", "您已连续签到" + countOfCheckInJSONObject.getJSONObject("data").get("cont_count").toString() + "天！");
             result = resultHashMap.get("curPointHashMap").toString() + "\n\n" + resultHashMap.get("countOfCheckInHashMap").toString() + "\n\n" + resultHashMap.get("checkIn").toString() + "\n\n" + resultHashMap.get("draw").toString();
             // 发送本次任务的ServerJiang微信服务号通知
-            if (server_jiang_key != null && !"".equals(server_jiang_key)) {
+            if (server_jiang_key != null && !server_jiang_key.isEmpty()) {
                 ServerJiangHttpUtils.scSend("掘金签到助手", result, server_jiang_key);
             }
 
-            if (push_deer_key != null && !"".equals(push_deer_key)) {
+            if (push_deer_key != null && !push_deer_key.isEmpty()) {
                 PushDeerHttpUtils.sendText(result, push_deer_key);
             }
         }
         // 通知内容记录到日志
         Date date = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         log.info("\nServer酱通知时间：" + sdf.format(date) + "\nServer酱通知内容：" + result);
         log.info("\n--------------------------------------------------------------------掘金自动化任务结束-------------------------------------------------------------------------");
     }
@@ -184,7 +183,7 @@ public class JueJin {
         // 获取当前等级最大掘友分！
         JSONArray jsonArray = progressJSONObject.getJSONObject("data").getJSONArray("level_spec");
         List<JSONObject> levelSpecList = jsonArray.stream().map(object -> (JSONObject) object).collect(Collectors.toList());
-        levelSpecList.stream().forEach(levelSpec -> {
+        levelSpecList.forEach(levelSpec -> {
             if (progressJSONObject.getJSONObject("data").get("current_level").toString().equals(levelSpec.get("level").toString())) {
                 stringJoiner.add("距离升级您还差" + (Double.parseDouble(levelSpec.get("max_score").toString()) - Double.parseDouble(progressJSONObject.getJSONObject("data").get("current_score").toString())) + "掘友分！");
             }
@@ -227,10 +226,10 @@ public class JueJin {
             }
         });
         String result = stringJoiner.toString();
-        if (server_jiang_key != null && !"".equals(server_jiang_key)) {
+        if (server_jiang_key != null && !server_jiang_key.isEmpty()) {
             ServerJiangHttpUtils.scSend("掘金等级成长助手", result, server_jiang_key);
         }
-        if (push_deer_key != null && !"".equals(push_deer_key)) {
+        if (push_deer_key != null && !push_deer_key.isEmpty()) {
             PushDeerHttpUtils.sendText(result, push_deer_key);
         }
         log.info("\n--------------------------------------------------------------------掘金等级成长任务结束-------------------------------------------------------------------------");

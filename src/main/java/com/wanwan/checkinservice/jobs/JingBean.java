@@ -34,10 +34,10 @@ public class JingBean {
         }
         if(isInvalidOfCookie){
             isInvalidOfCookie = false;
-            if(server_jiang_key != null && !"".equals(server_jiang_key)){
+            if(server_jiang_key != null && !server_jiang_key.isEmpty()){
                 ServerJiangHttpUtils.scSend("京东签到助手","jingdong_cookie失效！请更新有效cookie并手动执行脚本！",server_jiang_key);
             }
-            if(push_deer_key != null && !"".equals(push_deer_key)){
+            if(push_deer_key != null && !push_deer_key.isEmpty()){
                 PushDeerHttpUtils.sendText("jingdong_cookie失效！请更新有效cookie并手动执行脚本！",push_deer_key);
             }
             return;
@@ -55,10 +55,10 @@ public class JingBean {
                 "获得奖励：" + ((checkInJsonObject.getJSONObject("data").getJSONObject("dailyAward") == null) ? checkInJsonObject.getJSONObject("data").getJSONObject("continuityAward").getJSONObject("beanAward").get("beanCount").toString() : checkInJsonObject.getJSONObject("data").getJSONObject("dailyAward").getJSONObject("beanAward").get("beanCount").toString()) + "京豆\n\n您的京豆总资产为：" +
                 countOfBeanJsonObject.get("beanNum").toString() + "京豆";
         // 发送本次任务的ServerJiang微信服务号通知
-        if(server_jiang_key != null && !"".equals(server_jiang_key)){
+        if(server_jiang_key != null && !server_jiang_key.isEmpty()){
             ServerJiangHttpUtils.scSend("京东签到助手",resultData,server_jiang_key);
         }
-        if(push_deer_key != null && !"".equals(push_deer_key)){
+        if(push_deer_key != null && !push_deer_key.isEmpty()){
             PushDeerHttpUtils.sendText(resultData,push_deer_key);
         }
         log.info("\n--------------------------------------------------------------------京东自动化任务结束-------------------------------------------------------------------------");
@@ -76,7 +76,7 @@ public class JingBean {
     @Scheduled(cron = "0 0 7,12,21 * * ?")
     public void isInvalidOfCookie() throws Exception {
         JSONObject getCountOfBeanJsonObject = JingDongApi.getCountOfBean(jingdong_cookie);
-        log.info("本次jingdong_cookie校验响应信息：" + getCountOfBeanJsonObject);
+        log.info("本次jingdong_cookie校验响应信息：{}", getCountOfBeanJsonObject);
         if(getCountOfBeanJsonObject.get("code") == null){
             isInvalidOfCookie = false;
         }else {
