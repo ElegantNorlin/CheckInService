@@ -65,7 +65,3 @@
 docker-compose down
 docker-compose up -d
 ```
-
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=ElegantNorlin/CheckInService&type=Date)](https://star-history.com/#ElegantNorlin/CheckInService&Date)
